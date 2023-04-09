@@ -1,51 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+var requestBody = ""; 
 
-const UserList = () => {
-  const [users, setUsers] = useState([]);
+var client=new XMLHttpRequest();
+client.open("delete","https://dev168084.service-now.com/api/x_802938_backend_0/empresa_fornecedor_api/deletar-empresa?id=7ea5059a1b4a61106ba7ca641a4bcb21");
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/users', {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        setUsers(response.data);
-      } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
-      }
-    };
+client.setRequestHeader('Accept','application/json');
+client.setRequestHeader('Content-Type','application/json');
 
-    fetchUsers();
-  }, []);
+//Eg. UserName="admin", Password="admin" for this code sample.
+//client.setRequestHeader('Authorization', 'Basic '+btoa('admin'+':'+'admin'));
 
-  return (
-    <div>
-      <h1>Lista de Usuários</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Cidade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.address.city}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default UserList;
+client.onreadystatechange = function() { 
+	if(this.readyState == this.DONE) {
+		document.getElementById("response").innerHTML=this.status + this.response; 
+	}
+}; 
+client.send(requestBody);

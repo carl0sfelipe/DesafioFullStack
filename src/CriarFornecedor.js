@@ -22,7 +22,7 @@ const CriarFornecedor = () => {
             // Adicione outros cabeçalhos, se necessário
           },
         });
-        console.log(response.data)
+       // console.log(response.data)
         setEmpresas(response.data.result.empresas);
       } catch (error) {
         console.error('Erro ao buscar empresas:', error);
