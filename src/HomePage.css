@@ -1,0 +1,30 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .company {
+    width: calc(33% - 1rem);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .company h2 {
+    margin-top: 0;
+  }
+  
+  .company p {
+    margin-bottom: 0.5rem;
+  }
+  
