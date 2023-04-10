@@ -18,7 +18,7 @@ const SupplierList = () => {
         });
         //console.log(response.data)
         setSuppliers(response.data.result.fornecedores);
-        //console.log(suppliers);
+        console.log(suppliers);
       } catch (error) {
         console.error('Error while fetching suppliers:', error);
       }
@@ -44,7 +44,7 @@ const SupplierList = () => {
 
   return (
     <div>
-      <h1>Supplier List</h1>
+      <h1>Lista de Fornecedores</h1>
       <table>
         <thead>
           <tr>
@@ -52,6 +52,7 @@ const SupplierList = () => {
             <th>Nome</th>
             <th>Email</th>
             <th>CEP</th>
+            <th>Empresas</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -62,6 +63,9 @@ const SupplierList = () => {
               <td>{supplier.nome}</td>
               <td>{supplier.email}</td>
               <td>{supplier.cep}</td>
+              <td>
+                {supplier.empresas}
+              </td>
               <td>
                 <DeletarRegistro id={supplier.id} tabela="fornecedor" />
                 <AtualizarFornecedor id={supplier.id} companies={empresas} />

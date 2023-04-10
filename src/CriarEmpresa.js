@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {  validarCNPJ, validarCEP , formatCNPJ} from './validations';
 
-const CriarEmpresa = () => {
+
+const CriarEmpresa = ({fetchData}) => {
   const [companyName, setCompanyName] = useState('');
   const [cnpj, setCnpj] = useState('');
   const [cep, setCep] = useState('');
@@ -29,6 +31,18 @@ const CriarEmpresa = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
+    if (!validarCNPJ(cnpj)) {
+      alert('Por favor, insira um CNPJ válido.');
+      return;
+    }
+
+    const cepValido = await validarCEP(cep);
+    if (!cepValido) {
+      alert('Por favor, insira um CEP válido.');
+      return;
+    }
+
     const data = {
       nomeFantasia: companyName,
       cnpj: cnpj,
@@ -44,6 +58,7 @@ const CriarEmpresa = () => {
         },
       });
       console.log('Empresa criada com sucesso:', response.data);
+      fetchData();
     } catch (error) {
       console.error('Erro ao criar empresa:', error);
     }
@@ -59,8 +74,9 @@ const CriarEmpresa = () => {
         </div>
         <div>
           <label htmlFor="cnpj">CNPJ:</label>
-          <input type="text" id="cnpj" value={cnpj} onChange={(e) => setCnpj(e.target.value)} />
-        </div>
+          <input type="text" value={cnpj} onChange={(e) => {
+              const cnpjFormatado = formatCNPJ(e.target.value);
+              setCnpj(cnpjFormatado)}} />        </div>
         <div>
           <label htmlFor="cep">CEP:</label>
           <input type="text" id="cep" value={cep} onChange={(e) => setCep(e.target.value)} />

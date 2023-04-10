@@ -7,6 +7,11 @@ import SupplierList from './SupplierList';
 const HomePage = () => {
   const [showCreateCompany, setShowCreateCompany] = useState(false);
   const [showCreateSupplier, setShowCreateSupplier] = useState(false);
+  const [shouldFetchData, setShouldFetchData] = useState(false);
+
+  const fetchData = () => {
+    setShouldFetchData(!shouldFetchData);
+  };
 
   const toggleCreateCompany = () => {
     setShowCreateCompany(!showCreateCompany);
@@ -23,21 +28,21 @@ const HomePage = () => {
           <button onClick={toggleCreateCompany}>
             {showCreateCompany ? 'Fechar' : 'Criar Empresa'}
           </button>
-          {showCreateCompany && <CriarEmpresa />}
+          {showCreateCompany && <CriarEmpresa fetchData={fetchData}/>}
         </div>
         <div>
           <button onClick={toggleCreateSupplier}>
             {showCreateSupplier ? 'Fechar' : 'Criar Fornecedor'}
           </button>
-          {showCreateSupplier && <CriarFornecedor />}
+          {showCreateSupplier && <CriarFornecedor fetchData={fetchData}/>}
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
         <div>
-          <CompanyList />
+          <CompanyList key={shouldFetchData}/>
         </div>
         <div>
-          <SupplierList />
+          <SupplierList key={shouldFetchData}/>
         </div>
       </div>
     </div>
