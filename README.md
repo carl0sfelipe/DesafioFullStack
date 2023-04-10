@@ -7,4 +7,4 @@ Foi nesse momento que decidi implementar o backend do projeto utilizando o Servi
 
 É importante destacar que, assim que concluir a academia de Java, pretendo implementar o backend em Java, conforme originalmente solicitado.
 
-Em resumo, essa foi a única solução que encontrei para entregar o web-app completo dentro do prazo, especialmente após não ter conseguido finalizar o projeto na data inicialmente solicitada. Agradeço pela compreensão e apoio nesse processo.
+Em resumo, essa foi a única solução que encontrei para entregar o web-app minimamente funcional dentro do prazo, especialmente após não ter conseguido finalizar o projeto na data inicialmente solicitada. Agradeço pela compreensão e apoio nesse processo.
