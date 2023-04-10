@@ -59,12 +59,12 @@ const SupplierList = () => {
         <tbody>
           {suppliers.map((supplier) => (
             <tr key={supplier.id}>
-              <td>{supplier.id}</td>
+<td className="id-cell">{supplier.id.slice(0, 4) + (supplier.id.length > 4 ? '...' : '')}</td>
               <td>{supplier.nome}</td>
               <td>{supplier.email}</td>
               <td>{supplier.cep}</td>
               <td>
-                {supplier.empresas}
+              <td className="id-cell">{supplier.empresas ? (supplier.empresas.slice(0, 4) + (supplier.empresas.length > 4 ? '...' : '')) : ''}</td>
               </td>
               <td>
                 <DeletarRegistro id={supplier.id} tabela="fornecedor" />

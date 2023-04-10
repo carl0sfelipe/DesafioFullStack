@@ -57,16 +57,11 @@ const CompanyList = () => {
           {
           companies.map((company) => (
             <tr key={company.id}>
-              <td>{company.id}</td>
+<td className="id-cell">{company.id.slice(0, 4) + (company.id.length > 4 ? '...' : '')}</td>
               <td>{company.cnpj}</td>
               <td>{company.nomeFantasia}</td>
               <td>{company.cep}</td>
-              <td>
-                {company.fornecedores/* &&
-                  company.fornecedores.map((fornecedor) => (
-                    <div key={fornecedor}>{fornecedor}</div>
-                  ))*/}
-              </td>
+              <td className="id-cell">{company.fornecedores ? (company.fornecedores.slice(0, 4) + (company.fornecedores.length > 4 ? '...' : '')) : ''}</td>
               <td>
                 <DeletarRegistro id={company.id} tabela="empresa" />
                 <AtualizarEmpresa suppliers={suppliers} id={company.id} />

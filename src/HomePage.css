@@ -1,30 +1,33 @@
-.home-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .company-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .company {
-    width: calc(33% - 1rem);
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
-  }
-  
-  .company h2 {
-    margin-top: 0;
-  }
-  
-  .company p {
-    margin-bottom: 0.5rem;
-  }
-  
+.companyList table,
+.supplierList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.companyList th,
+.supplierList th,
+.companyList td,
+.supplierList td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.id-cell {
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.separator {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
