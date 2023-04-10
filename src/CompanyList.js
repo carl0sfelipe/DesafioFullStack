@@ -17,7 +17,6 @@ const CompanyList = () => {
         });
         //console.log(response.data)
         setCompanies(response.data.result.empresas);
-        //        console.log(companies)
 
         const response2 = await axios.get('https://dev168084.service-now.com/api/x_802938_backend_0/empresa_fornecedor_api/pegar-fornecedor', {
           headers: {
@@ -36,10 +35,13 @@ const CompanyList = () => {
     };
 
     fetchCompanies();
+
   }, []);
+  console.log(companies);
 
   return (
     <div>
+      <h1>Lista de Empresas</h1>
       <table>
         <thead>
           <tr>
@@ -47,22 +49,29 @@ const CompanyList = () => {
             <th>CNPJ</th>
             <th>Nome Fantasia</th>
             <th>CEP</th>
+            <th>Fornecedores</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {companies.map((company) => (
-            <div>
-              <tr key={company.id}>
-                <td>{company.id}</td>
-                <td>{company.cnpj}</td>
-                <td>{company.nomeFantasia}</td>
-                <td>{company.cep}</td>
-              </tr>              
-              <div>
+          {
+          companies.map((company) => (
+            <tr key={company.id}>
+              <td>{company.id}</td>
+              <td>{company.cnpj}</td>
+              <td>{company.nomeFantasia}</td>
+              <td>{company.cep}</td>
+              <td>
+                {company.fornecedores/* &&
+                  company.fornecedores.map((fornecedor) => (
+                    <div key={fornecedor}>{fornecedor}</div>
+                  ))*/}
+              </td>
+              <td>
                 <DeletarRegistro id={company.id} tabela="empresa" />
-               
-               <AtualizarEmpresa suppliers={suppliers} id={company.id}/> </div>
-            </div>
+                <AtualizarEmpresa suppliers={suppliers} id={company.id} />
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

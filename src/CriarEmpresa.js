@@ -33,7 +33,7 @@ const CriarEmpresa = () => {
       nomeFantasia: companyName,
       cnpj: cnpj,
       cep: cep,
-      fornecedor: selectedSupplier
+      fornecedores: selectedSupplier
     };
 
     try {

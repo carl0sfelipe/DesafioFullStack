@@ -52,25 +52,25 @@ const SupplierList = () => {
             <th>Nome</th>
             <th>Email</th>
             <th>CEP</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-        {suppliers.map((supplier) => (
-          <div>
+          {suppliers.map((supplier) => (
             <tr key={supplier.id}>
               <td>{supplier.id}</td>
               <td>{supplier.nome}</td>
               <td>{supplier.email}</td>
               <td>{supplier.cep}</td>
+              <td>
+                <DeletarRegistro id={supplier.id} tabela="fornecedor" />
+                <AtualizarFornecedor id={supplier.id} companies={empresas} />
+              </td>
             </tr>
-            <DeletarRegistro id={supplier.id} tabela="fornecedor" />
-            <AtualizarFornecedor id={supplier.id} companies={empresas}/>
-            </div>
           ))}
         </tbody>
       </table>
     </div>
   );
 };
-
 export default SupplierList;

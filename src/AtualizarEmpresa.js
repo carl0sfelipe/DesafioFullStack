@@ -32,7 +32,7 @@ const AtualizarEmpresa = ({ companyId, suppliers }) => {
 
   return (
     <div>
-      <button onClick={toggleExpand}>{expanded ? 'Fechar' : 'Expandir'}</button>
+      <button onClick={toggleExpand}>{expanded ? 'Fechar' : 'Atualizar'}</button>
       {expanded && (
         <div>
           <label>

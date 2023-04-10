@@ -1,29 +1,47 @@
-import React from "react";
-import CompanyList from "./CompanyList";
-import SupplierList from "./SupplierList.js";
-import CriarEmpresa from "./CriarEmpresa.js";
-import CriarFornecedor from "./CriarFornecedor";
-import "./HomePage.css";
+import React, { useState } from 'react';
+import CriarEmpresa from './CriarEmpresa';
+import CriarFornecedor from './CriarFornecedor';
+import CompanyList from './CompanyList';
+import SupplierList from './SupplierList';
 
-function HomePage() {
+const HomePage = () => {
+  const [showCreateCompany, setShowCreateCompany] = useState(false);
+  const [showCreateSupplier, setShowCreateSupplier] = useState(false);
+
+  const toggleCreateCompany = () => {
+    setShowCreateCompany(!showCreateCompany);
+  };
+
+  const toggleCreateSupplier = () => {
+    setShowCreateSupplier(!showCreateSupplier);
+  };
+
   return (
-    <div className="home-page">
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
-<CriarEmpresa/>
+          <button onClick={toggleCreateCompany}>
+            {showCreateCompany ? 'Fechar' : 'Criar Empresa'}
+          </button>
+          {showCreateCompany && <CriarEmpresa />}
         </div>
         <div>
-            <CriarFornecedor/>
+          <button onClick={toggleCreateSupplier}>
+            {showCreateSupplier ? 'Fechar' : 'Criar Fornecedor'}
+          </button>
+          {showCreateSupplier && <CriarFornecedor />}
         </div>
-      <div>
-      <h1>Lista de Empresas</h1>
-      <CompanyList/>
       </div>
-      <div>
-        <h1>Lista de Fornecedores</h1>
-        <SupplierList/>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+        <div>
+          <CompanyList />
+        </div>
+        <div>
+          <SupplierList />
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;
